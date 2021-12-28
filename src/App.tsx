@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ColorfulMessage from "./components/ColorfulMessage";
 import axios from "axios";
+import Box from "@mui/material/Box";
 //import Box from "@material-ui/core/Box";
 
 const App = () => {
@@ -15,7 +16,7 @@ const App = () => {
 
   const onClickAPI = () => {
     axios
-      .get("https://www.googleapis.com/books/v1/volumes?q=quilting", {
+      .get("https://muro.sakenowa.com/sakenowa-data/api/areas", {
         crossDomain: true
       })
       .then(function (response) {
@@ -33,16 +34,38 @@ const App = () => {
 
   return (
     <>
-      <h1 style={{ color: "red" }}>h1タグ</h1>
-      <p style={contentStyle}>Pタグ</p>
-      <ColorfulMessage color="blue">こども</ColorfulMessage>
-      <ColorfulMessage color="blue">{num}</ColorfulMessage>
-      <button onClick={onClickAPI}>GoogleAPI</button>
-      <br />
-      <button onClick={onClickCount}>カウント</button>
-      <br />
-      <button onClick={onClickFace}>ON/OFF</button>
-      {faceFlag && <p>顔</p>}
+      <Box
+        sx={{
+          width: 100,
+          height: 300,
+          backgroundColor: "red"
+        }}
+      >
+        <p>aaa</p>
+      </Box>
+
+      <Box
+        sx={{
+          width: 100,
+          height: 300,
+          backgroundColor: "black",
+          "&:hover": {
+            backgroundColor: "primary.main",
+            opacity: [0.9, 0.8, 0.7]
+          }
+        }}
+      >
+        <h1 style={{ color: "red" }}>h1タグ</h1>
+        <p style={contentStyle}>Pタグ</p>
+        <ColorfulMessage color="blue">こども</ColorfulMessage>
+        <ColorfulMessage color="blue">{num}</ColorfulMessage>
+        <button onClick={onClickAPI}>GoogleAPI</button>
+        <br />
+        <button onClick={onClickCount}>カウント</button>
+        <br />
+        <button onClick={onClickFace}>ON/OFF</button>
+        {faceFlag && <p>顔</p>}
+      </Box>
     </>
   );
 };
