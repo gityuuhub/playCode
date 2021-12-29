@@ -15,12 +15,18 @@ const App = () => {
   };
 
   const onClickAPI = () => {
-    axios
-      .get("https://muro.sakenowa.com/sakenowa-data/api/areas", {
-        crossDomain: true
+    fetch("https://www.googleapis.com/books/v1/volumes?q=quilting", {
+      mode: "cors"
+    })
+      .then((response) => {
+        return response.json();
       })
-      .then(function (response) {
-        alert();
+      .then((data) => {
+        console.log(data);
+        alert(data);
+      })
+      .catch((error) => {
+        console.log("失敗しました");
       });
   };
 
